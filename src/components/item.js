@@ -7,7 +7,6 @@ function ItemRow(props){
     const [backItem, setBackItem] = useState(null)
     const [editMode, setEditMode] = useState(false)
     const focusRef = useRef();
-    console.log('renderes', itemProp.pacient)
     useEffect(()=>{
         setItemState(itemProp)
     },[itemProp])

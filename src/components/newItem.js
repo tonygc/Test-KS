@@ -12,7 +12,6 @@ export default function NewItem(props){
         end_date:new Date()
     })
     const focusRef = useRef();
-    console.log('renderes new item')
     useEffect(()=>{
         focusRef.current.focus()
     },[])
@@ -20,6 +19,10 @@ export default function NewItem(props){
     const onChangeProp = (ev) => {
         const {id, value} = ev.target;
         setItemState({...itemState, [id]: value})
+    }
+
+    const saveItemLocal = (item) =>{
+        saveCreation(item)
     }
 
     return (
@@ -33,7 +36,7 @@ export default function NewItem(props){
             </div>
             <div className="d-flex justify-content-evenly" style={{width:'10%'}}>
                 <button title="Cancelar" style={{maxHeight: '40px'}} className="btn btn-light" onClick={()=>cancelCreation()}><i className="mdi mdi-close"></i></button>
-                <button type="button"  title="Guardar" style={{maxHeight: '40px'}} className="btn btn-dark"><i onClick={()=>saveCreation(itemState)} className="mdi mdi-content-save"></i></button>
+                <button type="button"  title="Guardar" style={{maxHeight: '40px'}} className="btn btn-dark"><i onClick={()=>saveItemLocal(itemState)} className="mdi mdi-content-save"></i></button>
             </div>
         </div>
     )

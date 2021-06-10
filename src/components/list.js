@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 import ItemRow from './item'
 import NewItem from './newItem'
 import { data } from '../data'
@@ -9,15 +9,13 @@ export default function List(){
         setRows(data)
     },[])
     const saveItem=(item)=>{
-        console.log(item)
         setCreateState(false)
         if(rows_pacients.length>=20){
-            setRows(rows=>[item, ...rows.slice(0,18)])
+            setRows(rows=>[item, ...rows.slice(0,19)])
         }else{
             setRows(rows=>[item, ...rows])
         }
     }
-    const saveItemCallback = useCallback((item)=>{saveItem(item)},[])
     return(
         <div className="container-fluid">
             <div className="row">
@@ -32,7 +30,7 @@ export default function List(){
                     </div>
                     <div className="card-body">
                         {createState &&
-                            <NewItem saveCreation={saveItemCallback} cancelCreation={()=>setCreateState(false)} />
+                            <NewItem saveCreation={saveItem} cancelCreation={()=>setCreateState(false)} />
                         }
                         <div className="badge bg-primary text-wrap" style={{width: '6rem'}}>
                         Total Items: {rows_pacients.length}
