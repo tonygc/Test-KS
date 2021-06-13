@@ -47,7 +47,7 @@ function ItemRow(props){
             }
             {editMode &&
                 <tr className="table-light">
-                <td className="table-light"><input ref={focusRef} id="pacient" onChange={(ev)=> onChangeProp(ev)} type="text" value={itemState?.pacient} className="form-control" placeholder="Nombre del paciente" /></td>
+                <td className="table-light"><input id="pacient" ref={focusRef} onChange={(ev)=> onChangeProp(ev)} type="text" value={itemState?.pacient} className="form-control" placeholder="Nombre del paciente" /></td>
                 <td className="table-light"><input id="dentist" onChange={(ev)=> onChangeProp(ev)} type="text" value={itemState?.dentist} className="form-control" placeholder="Nombre del odontólogo" /></td>
                 <td className="table-light"><InputNumber enableMobileNumericKeyboard id="tooth_plates" onChange={(ev)=> setItemState({...itemState, tooth_plates:ev})} className="form-control" value={itemState?.tooth_plates} /></td>
                 <td className="table-light">{ <DatePicker onChange={(ev)=> setItemState({...itemState, init_date:ev})} className="form-control" selected={itemState?.init_date} /> }</td>
@@ -55,7 +55,7 @@ function ItemRow(props){
                 <td className="table-light">
                     <div className="d-flex justify-content-evenly">
                         <button className="btn btn-secondary" onClick={()=>handlerEditMode(false)}><i className="mdi mdi-close"></i></button>
-                        <button className="btn btn-dark"><i onClick={()=>setEditMode(false)} className="mdi mdi-content-save"></i></button>
+                        <button className="btn btn-dark" onClick={()=>setEditMode(false)}><i className="mdi mdi-content-save"></i></button>
                     </div>
                 </td>
                 </tr>

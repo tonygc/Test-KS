@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import DatePicker from 'react-datepicker'
 import InputNumber from 'react-input-number';
 
@@ -21,8 +21,8 @@ export default function NewItem(props){
         setItemState({...itemState, [id]: value})
     }
 
-    const saveItemLocal = (item) =>{
-        saveCreation(item)
+    const saveItemLocal = () =>{
+        saveCreation(itemState)
     }
 
     return (
@@ -36,7 +36,7 @@ export default function NewItem(props){
             </div>
             <div className="d-flex justify-content-evenly" style={{width:'10%'}}>
                 <button title="Cancelar" style={{maxHeight: '40px'}} className="btn btn-light" onClick={()=>cancelCreation()}><i className="mdi mdi-close"></i></button>
-                <button type="button"  title="Guardar" style={{maxHeight: '40px'}} className="btn btn-dark"><i onClick={()=>saveItemLocal(itemState)} className="mdi mdi-content-save"></i></button>
+                <button type="button" style={{maxHeight: '40px'}} className="btn btn-dark" onClick={saveItemLocal}><i className="mdi mdi-content-save"></i></button>
             </div>
         </div>
     )
